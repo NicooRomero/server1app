@@ -6,7 +6,7 @@ const app = express();
 
 connectDB();
 
-const whitelist = ['https://lucid-volhard-2f67c5.netlify.app', 'https://radiant-citadel-25364.herokuapp.com/'];
+const whitelist = ['https://lucid-volhard-2f67c5.netlify.app', 'https://radiant-citadel-25364.herokuapp.com/', 'http://localhost:3000','http://localhost:4000'];
 const corsOptions = {
     origin: (origin, callback) => {
         const exist = whitelist.some( domain => domain === origin );
