@@ -6,7 +6,19 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
+const whitelist = ['https://lucid-volhard-2f67c5.netlify.app', 'https://radiant-citadel-25364.herokuapp.com/'];
+const corsOptions = {
+    origin: (origin, callback) => {
+        const exist = whitelist.some( domain => domain === origin );
+        if(exist) {
+            callback(null, true)
+        } else {
+            callback(new Error('not allowed by cors'))
+        }
+    }
+}
+
+app.use(cors(corsOptions));
 
 app.use(express.json({ extended: true }));
 
